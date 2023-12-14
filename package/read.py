@@ -3,7 +3,7 @@ import json
 from .processing import processing
 
 def read_tasks():
-    while True:
+    while True: #Loop to keep asking until user enters 5 to return to main menu
         print()
         print("Elige una opción de Consulta:")
         print(" (1) Mostrar todas las tareas")
@@ -14,7 +14,7 @@ def read_tasks():
         print()
         read_answer = int(input("¿Qué tareas deseas consultar? (1-5): "))
 
-        if read_answer in [1, 2, 3, 4, 5]:
+        if read_answer in [1, 2, 3, 4, 5]: # this can be replaced with match-case in python version 3.10 ( Hever usa 3.9.6 )
             if read_answer == 1:
                 print()
                 print("Ejecutar: Mostrar todas las tareas")
@@ -118,7 +118,8 @@ def show_id_task():
                     WHERE id = ?""", (read_id))
         id_selected = cursor.fetchone()
         processing()
-        if id_selected: #Verify a row was found 
+
+        if id_selected: #Verify a row was found with ID provided, if not. Ask ID again
             print()
             print("Tarea ENCONTRADA:")
             json_id_selected = {

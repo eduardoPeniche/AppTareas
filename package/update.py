@@ -4,11 +4,10 @@ from datetime import datetime
 from .processing import processing
 
 def set_completed():
-    # Create connection with database
     conn = sqlite3.connect("taskapp.sqlite3")
     cursor = conn.cursor()
 
-    cursor.execute("""SELECT * FROM tasks WHERE is_completed = 0""")
+    cursor.execute("""SELECT * FROM tasks WHERE is_completed = 0""") #Print pending tasks to show user which ones can be marked as completed
     not_completed = cursor.fetchall()
 
     json_not_completed = []
@@ -32,14 +31,13 @@ def set_completed():
                    date_completed = ?
                    WHERE id = ?""", (update_completed, update_id))
     conn.commit()
-
+    # Confirm updated entry in database with date_completed successfully changed
     cursor.execute("""SELECT * FROM tasks
-                   WHERE id = ? """, (update_id))
+                   WHERE id = ? AND date_completed IS NOT NULL""", (update_id))
     just_updated = cursor.fetchone()
     conn.close()
-
-    if just_updated: #Verify a row was found
-        processing() 
+    processing()
+    if just_updated: 
         print()
         print("Actualización de tarea EXITOSA")
         print("Confirmación de entrada en Base de Datos:") 

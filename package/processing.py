@@ -1,5 +1,5 @@
 import time
-
+# Simulate a delay in database processing to slow down terminal
 def processing():
     print()
     message = "Procesando"

@@ -3,15 +3,15 @@
 Crear una aplicación de Python para terminal y línea de comandos que sea útil para gestionar las tareas a realizar.
 
 Esta aplicación debe contar con un modelo de base de datos que lleve el registro de:
-/- Nombre de la tarea 
-/- Descripción de la tarea
-/- Estado de la tarea (Completado, No completado)
-/- Fecha en la que se creó la tarea.
-/- Fecha en la que se completó la tarea.
+- Nombre de la tarea 
+- Descripción de la tarea
+- Estado de la tarea (Completado, No completado)
+- Fecha en la que se creó la tarea.
+- Fecha en la que se completó la tarea.
 
 Expectativas de la actividad:
-/- La aplicación debe correr en la terminal y línea de comandos.
-/- La aplicación debe utilizar como motor de base de datos sqlite3.
+- La aplicación debe correr en la terminal y línea de comandos.
+- La aplicación debe utilizar como motor de base de datos sqlite3.
 - La aplicación debe contar con un menú interactivo.
 - La aplicación debe permitir todas las operaciones básicas de base de datos (CRUD -> CREATE, READ, UPDATE, DELETE).
 - La aplicación debe de formatear las respuestas en una estructura de datos tipo JSON (Puede ser una lista de objetos, un diccionario, etc)

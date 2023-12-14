@@ -10,7 +10,7 @@ def delete_task():
     cursor.execute("""DELETE FROM tasks
                    WHERE id = ?""", (delete_id))
     conn.commit()
-
+    # Confirm the entry was successfully deleted
     cursor.execute("""SELECT * FROM tasks
                    WHERE id = ?""", (delete_id))
     just_deleted = cursor.fetchone()

@@ -4,7 +4,7 @@ from .read import read_tasks
 from .delete import delete_task
 
 def ask_user():
-    while True:
+    while True: #Loop to keep asking until user enters 5 to exit app
         print()
         print("Menú Principal:")
         print(" (1) Crear tarea")
@@ -15,7 +15,7 @@ def ask_user():
         print()
         crud_answer = int(input("¿Qué operación deseas realizar? (1-5): "))
 
-        if crud_answer in [1, 2, 3, 4, 5]:
+        if crud_answer in [1, 2, 3, 4, 5]: # this can be replaced with match-case in python version 3.10 ( Hever usa 3.9.6 )
             if crud_answer == 1:
                 print()
                 print("Ejecutar: Crear tarea")
@@ -35,6 +35,6 @@ def ask_user():
             elif crud_answer == 5:
                 print()
                 print("Cerrando la App...")
-                break
+                break #Exit loop and continue to main app
         else:
             print("¡ERROR!: Entrada invalida, debe ser un numero entre 1 y 5")
