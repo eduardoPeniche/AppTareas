@@ -1,5 +1,6 @@
 from .create import create_task
 from .update import set_completed
+from .read import read_tasks
 import sys
 
 def ask_user():
@@ -23,6 +24,7 @@ def ask_user():
             elif crud_answer == 2:
                 print()
                 print("Ejecutar: Consultar tarea")
+                read_tasks()
             elif crud_answer == 3:
                 print()
                 print("Ejecutar: Actualizar tarea")
@@ -30,6 +32,7 @@ def ask_user():
             elif crud_answer == 4:
                 print()
                 print("Ejecutar: Eliminar tarea")
+                pass
             elif crud_answer == 5:
                 print()
                 print("Cerrando la App...")
