@@ -1,13 +1,15 @@
 from .create import create_task
+from .update import set_completed
+import sys
 
 def ask_user():
     print()
     print("Menú de Operaciones:")
     print(" (1) Crear tarea")
-    print(" (2) Consultar tarea")
-    print(" (3) Actualizar tarea")
+    print(" (2) Consultar tareas")
+    print(" (3) Finalizar tarea")
     print(" (4) Eliminar tarea")
-    print(" (5) Salir del programa")
+    print(" (5) Salir de la App")
 
     while True:
         print()
@@ -24,11 +26,13 @@ def ask_user():
             elif crud_answer == 3:
                 print()
                 print("Ejecutar: Actualizar tarea")
+                set_completed()
             elif crud_answer == 4:
                 print()
                 print("Ejecutar: Eliminar tarea")
             elif crud_answer == 5:
                 print()
-                print("Finalizando Programa...")
+                print("Cerrando la App...")
+                sys.exit()
         else:
             print("¡ERROR!: Entrada invalida, debe ser un numero entre 1 y 5")

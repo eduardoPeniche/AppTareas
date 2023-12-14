@@ -13,8 +13,6 @@ def main():
     create_table()
 
     ask_user()
-    print("Programa Finalizado")
-
 
 if __name__ == "__main__":
     main()
