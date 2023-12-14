@@ -108,23 +108,29 @@ def show_id_task():
     conn = sqlite3.connect("taskapp.sqlite3")
     cursor = conn.cursor()
 
-    read_id = input(" ---> Qué tarea deseas consultar? Ingresa el id: ")
+    while True:
+        read_id = input(" ---> Qué tarea deseas consultar? Ingresa id (0 para Regresar): ")
 
-    cursor.execute("""SELECT * FROM tasks
-                   WHERE id = ?""", (read_id))
-    id_selected = cursor.fetchone()
+        if read_id == "0":
+            break
+
+        cursor.execute("""SELECT * FROM tasks
+                    WHERE id = ?""", (read_id))
+        id_selected = cursor.fetchone()
+        processing()
+        if id_selected: #Verify a row was found 
+            print()
+            print("Tarea ENCONTRADA:")
+            json_id_selected = {
+                "name": id_selected[1],
+                "description": id_selected[2],
+                "is_completed": id_selected[3],
+                "date_created": id_selected[4],
+                "date_completed": id_selected[5]
+            }
+            print(json.dumps(json_id_selected, indent=4))
+            break
+        else:
+            print()
+            print("Tarea NO ENCONTRADA. Intenta con otro ID")
     conn.close()
-
-    if id_selected: #Verify a row was found
-        processing() 
-        print()
-        print("Tarea ENCONTRADA:")
-        json_id_selected = {
-            "name": id_selected[1],
-            "description": id_selected[2],
-            "is_completed": id_selected[3],
-            "date_created": id_selected[4],
-            "date_completed": id_selected[5]
-        }
-
-    print(json.dumps(json_id_selected, indent=4))
