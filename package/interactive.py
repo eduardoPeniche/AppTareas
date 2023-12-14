@@ -1,18 +1,18 @@
 from .create import create_task
 from .update import set_completed
 from .read import read_tasks
+from .delete import delete_task
 import sys
 
 def ask_user():
-    print()
-    print("Menú de Operaciones:")
-    print(" (1) Crear tarea")
-    print(" (2) Consultar tareas")
-    print(" (3) Finalizar tarea")
-    print(" (4) Eliminar tarea")
-    print(" (5) Salir de la App")
-
     while True:
+        print()
+        print("Menú Principal:")
+        print(" (1) Crear tarea")
+        print(" (2) Consultar tareas")
+        print(" (3) Finalizar tarea")
+        print(" (4) Eliminar tarea")
+        print(" (5) Salir de la App")
         print()
         crud_answer = int(input("¿Qué operación deseas realizar? (1-5): "))
 
@@ -20,7 +20,7 @@ def ask_user():
             if crud_answer == 1:
                 print()
                 print("Ejecutar: Crear tarea")
-                print(create_task())
+                create_task()
             elif crud_answer == 2:
                 print()
                 print("Ejecutar: Consultar tarea")
@@ -32,10 +32,10 @@ def ask_user():
             elif crud_answer == 4:
                 print()
                 print("Ejecutar: Eliminar tarea")
-                pass
+                delete_task()
             elif crud_answer == 5:
                 print()
                 print("Cerrando la App...")
-                sys.exit()
+                break
         else:
             print("¡ERROR!: Entrada invalida, debe ser un numero entre 1 y 5")

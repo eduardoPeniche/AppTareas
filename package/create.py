@@ -49,4 +49,4 @@ def create_task():
             "date_created": just_created[4]
         }
 
-    return json.dumps(json_just_created, indent=4)
+    print(json.dumps(json_just_created, indent=4))

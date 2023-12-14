@@ -4,15 +4,14 @@ import json
 from .processing import processing
 
 def read_tasks():
-    print()
-    print("Elige una opción:")
-    print(" (1) Mostrar todas las tareas")
-    print(" (2) Mostrar tareas pendientes")
-    print(" (3) Mostrar tareas completadas")
-    print(" (4) Mostrar tarea con ID especifico")
-    print(" (5) Regresar al Menú Principal")
-
     while True:
+        print()
+        print("Elige una opción de Consulta:")
+        print(" (1) Mostrar todas las tareas")
+        print(" (2) Mostrar tareas pendientes")
+        print(" (3) Mostrar tareas completadas")
+        print(" (4) Mostrar tarea con ID especifico")
+        print(" (5) Regresar al Menú Principal")
         print()
         read_answer = int(input("¿Qué tareas deseas consultar? (1-5): "))
 
@@ -36,6 +35,8 @@ def read_tasks():
             elif read_answer == 5:
                 print()
                 print("Regresando al Menú Principal")
+                processing()
+                print()
                 break
         else:
             print("¡ERROR!: Entrada invalida, debe ser un numero entre 1 y 5")
@@ -58,6 +59,8 @@ def show_all_tasks():
         }
         json_all_tasks.append(task_entry)
     print("Tareas:")
+    processing()
+    print()
     print(json.dumps(json_all_tasks, indent=4))
 
 def show_pending_tasks():
@@ -77,6 +80,8 @@ def show_pending_tasks():
         }
         json_not_completed.append(task_entry)
     print("Tareas Pendientes:")
+    processing()
+    print()
     print(json.dumps(json_not_completed, indent=4))
 
 def show_complete_tasks():
@@ -96,6 +101,8 @@ def show_complete_tasks():
         }
         json_completed.append(task_entry)
     print("Tareas Finalizadas:")
+    processing()
+    print()
     print(json.dumps(json_completed, indent=4))
 
 def show_id_task():
