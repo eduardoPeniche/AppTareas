@@ -15,14 +15,20 @@ def ask_user():
 
         if crud_answer in [1, 2, 3, 4, 5]:
             if crud_answer == 1:
+                print()
+                print("Ejecutar: Crear tarea")
                 print(create_task())
             elif crud_answer == 2:
-                print("2")
+                print()
+                print("Ejecutar: Consultar tarea")
             elif crud_answer == 3:
-                print("3")
+                print()
+                print("Ejecutar: Actualizar tarea")
             elif crud_answer == 4:
-                print("4")
+                print()
+                print("Ejecutar: Eliminar tarea")
             elif crud_answer == 5:
-                print("5")
+                print()
+                print("Finalizando Programa...")
         else:
             print("¡ERROR!: Entrada invalida, debe ser un numero entre 1 y 5")

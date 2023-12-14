@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import datetime
 import json
+from .processing import processing
 
 
 # Function to create table 'tasks' in taskapp.sqlite3
@@ -22,7 +23,7 @@ def create_table():
 def create_task():
     name = input("Ingresa el nombre de la tarea: ")
     desc = input("Ingresa la descripción de la tarea: ")
-    date_created = datetime.now()
+    date_created = datetime.utcnow().strftime("%d/%m/%Y %H:%M:%S")
 
     # Create connection with database
     conn = sqlite3.connect("taskapp.sqlite3")
@@ -34,17 +35,18 @@ def create_task():
 
     cursor.execute("""SELECT * FROM tasks
                    WHERE name = ? AND description = ? AND date_created = ?""", (name, desc, date_created))
-    just_created = cursor.fetchall()
+    just_created = cursor.fetchone()
     conn.close()
 
-    json_just_created = []
-    for entry in just_created:
-        entry_item = {
-            "name": entry[1],
-            "description": entry[2],
-            "date_created": entry[4]
+    if just_created: #Verify a row was found
+        processing() 
+        print()
+        print("Creación de tarea EXITOSA")
+        print("Confirmación de entrada en Base de Datos:") 
+        json_just_created = {
+            "name": just_created[1],
+            "description": just_created[2],
+            "date_created": just_created[4]
         }
-        json_just_created.append(entry_item)
 
     return json.dumps(json_just_created, indent=4)
-    
