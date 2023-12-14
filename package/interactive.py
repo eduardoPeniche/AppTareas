@@ -2,7 +2,6 @@ from .create import create_task
 from .update import set_completed
 from .read import read_tasks
 from .delete import delete_task
-import sys
 
 def ask_user():
     while True:

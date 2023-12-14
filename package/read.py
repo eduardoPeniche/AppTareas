@@ -1,6 +1,5 @@
 import sqlite3
 import json
-#from .interactive import ask_user
 from .processing import processing
 
 def read_tasks():
